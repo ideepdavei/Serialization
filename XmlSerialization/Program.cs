@@ -24,6 +24,16 @@ namespace XmlSerialization
                 xmlSerializer.Serialize(fileStream, person);
                 Console.WriteLine($"Object serialized");
             }
+            Console.WriteLine($"To deserialize press any key");
+            Console.ReadKey();
+
+            using (FileStream fileStream = new FileStream("person.xml", FileMode.OpenOrCreate))
+            {
+                Person newPerson = (Person)xmlSerializer.Deserialize(fileStream);
+                Console.WriteLine($"Objec Deserialized");
+                Console.WriteLine($"Person Name: {newPerson.Name}\nPerson Age: {newPerson.Age}");
+            }
+            Console.ReadKey();
         }
     }
 }
