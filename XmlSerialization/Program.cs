@@ -33,7 +33,36 @@ namespace XmlSerialization
                 Console.WriteLine($"Objec Deserialized");
                 Console.WriteLine($"Person Name: {newPerson.Name}\nPerson Age: {newPerson.Age}");
             }
+            Console.WriteLine($"Press any key to serialize people collection");
             Console.ReadKey();
+            ///////////////////////////////////////////////////////////////////////////////
+
+            List<Person> people = new List<Person>()
+            {
+                new Person("Bill", 25),
+                new Person("Tom", 30),
+                new Person("Jill", 28)
+            };
+            XmlSerializer peopleSerializer = new XmlSerializer(typeof(List<Person>));
+            using(FileStream fileStream = new FileStream("people.xml", FileMode.OpenOrCreate))
+            {
+                peopleSerializer.Serialize(fileStream, people);
+                Console.WriteLine($"Collection Serialized");
+            }
+            Console.WriteLine($"Press any key to Desrialize people collection");
+            Console.ReadKey();
+
+            using(FileStream fileStream = new FileStream("people.xml", FileMode.OpenOrCreate))
+            {
+                List<Person> newPeople = (List<Person>)peopleSerializer.Deserialize(fileStream);
+                foreach (var item in newPeople)
+                {
+                    Console.WriteLine($"Person Name: {item.Name}\t Person Age: {item.Age}");
+                }
+                Console.WriteLine($"Collection Deserialized");
+            }
+            Console.ReadKey();
+            
         }
     }
 }
