@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace SOAPSerialization
 {
+    [Serializable]
     public class Manufacturer
     {
         private string manufacturerName;

@@ -37,6 +37,7 @@ namespace SOAPSerialization
                 }
             }
             Console.WriteLine($"press any key to exit...");
+            Console.ReadKey();
         }
     }
 }
