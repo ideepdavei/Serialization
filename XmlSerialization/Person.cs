@@ -7,9 +7,6 @@ using System.Xml.Serialization;
 
 namespace XmlSerialization
 {
-        //The class to be serialized must have a standard constructor without parameters.
-        //Also only open members are subject to serialization.If the class has fields or properties 
-        //with the private modifier, then they will be ignored during serialization.
     [Serializable]
     public class Person
     {
